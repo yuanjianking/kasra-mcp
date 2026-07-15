@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.cfg
+src/kasra_mcp/__init__.py
+src/kasra_mcp/server.py
+src/kasra_mcp.egg-info/PKG-INFO
+src/kasra_mcp.egg-info/SOURCES.txt
+src/kasra_mcp.egg-info/dependency_links.txt
+src/kasra_mcp.egg-info/entry_points.txt
+src/kasra_mcp.egg-info/requires.txt
+src/kasra_mcp.egg-info/top_level.txt

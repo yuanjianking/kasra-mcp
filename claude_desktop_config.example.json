@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kasra": {
+      "description": "Kasra AI Development Security Governance — file scanning, code review, rule management",
+      "command": "kasra-mcp",
+      "args": [],
+      "env": {
+        "KASRA_API_URL": "http://localhost:8090",
+        "KASRA_API_KEY": "kasra-dev-api-key-change-in-prod"
+      }
+    }
+  }
+}
