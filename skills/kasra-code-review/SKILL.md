@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: kasra-code-review
 description: 🔒 Perform deep security review of the current code repository using the Kasra security engine (direct SDK or MCP)
 metadata:
   type: skill
@@ -7,7 +7,7 @@ metadata:
 
 # Kasra Code Review
 
-When a user types `/code-review [path]`, use the Kasra MCP tools to perform a security review of the code repository.
+When a user types `/kasra-code-review [path]`, use the Kasra MCP tools to perform a security review of the code repository.
 
 ## Execution Method (MCP only)
 
@@ -62,6 +62,6 @@ Severity priority:
 
 | Command | Description |
 |---------|-------------|
-| `/code-review` | Scan current project |
-| `/code-review ./src` | Scan specified directory |
-| `/code-review --severity P0` | View P0 issues only |
+| `/kasra-code-review` | Scan current project |
+| `/kasra-code-review ./src` | Scan specified directory |
+| `/kasra-code-review --severity P0` | View P0 issues only |
