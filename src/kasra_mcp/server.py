@@ -136,11 +136,15 @@ def scan_file(path: str) -> str:
             if "error" in data:
                 continue
             total_files += 1
-            total_findings += len(data.get("findings", []))
+            total_findings += data.get("total_findings", 0)
+            # Flatten triggered rules from API BatchScanResponse
+            file_triggered = []
+            for r in data.get("results", []):
+                file_triggered.extend(r.get("triggered_rules", []))
             all_results.append({
                 "file": str(f.relative_to(resolved)),
-                "findings": data.get("findings", []),
-                "total_findings": len(data.get("findings", [])),
+                "findings": file_triggered,
+                "total_findings": len(file_triggered),
             })
 
     return json.dumps({

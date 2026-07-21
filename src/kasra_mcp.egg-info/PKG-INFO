@@ -137,11 +137,11 @@ Paste this into `~/Library/Application Support/Claude/claude_desktop_config.json
 ## How it works
 
 ```
-                                                                     
- Claude Desktop / Cursor / Claude Code                               
-        │                                                             
-        │  stdio (JSON-RPC over stdin/stdout)                         
-        ▼                                                             
+
+ Claude Desktop / Cursor / Claude Code
+        │
+        │  stdio (JSON-RPC over stdin/stdout)
+        ▼
  ┌─────────────────┐        POST /v1/scan/file     ┌────────────────┐
  │   kasra-mcp     │ ─────────────────────────────→ │  Kasra API     │
  │                 │        POST /v1/rules/export   │  (Docker)      │
@@ -169,7 +169,3 @@ cd kasra-mcp
 pip install -e .
 python3 -m kasra_mcp.server
 ```
-
-## License
-
-Proprietary — Internal Use Only.
