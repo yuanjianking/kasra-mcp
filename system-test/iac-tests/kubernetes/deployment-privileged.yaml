@@ -1,0 +1,26 @@
+# IAC-03: Container Runtime Security — K8s Deployment with privileged mode
+# Additional test: K8s-level privileged container with dropped read-only rootfs
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insecure-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insecure
+  template:
+    metadata:
+      labels:
+        app: insecure
+    spec:
+      containers:
+      - name: app
+        image: myapp:1.0
+        securityContext:
+          privileged: true
+          readOnlyRootFilesystem: false
+          capabilities:
+            add: ["SYS_ADMIN", "NET_ADMIN", "SYS_PTRACE"]
+            drop: []   # No capabilities dropped
+      automountServiceAccountToken: true

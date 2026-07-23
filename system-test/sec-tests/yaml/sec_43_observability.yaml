@@ -1,0 +1,10 @@
+# SEC-43: Observability Data Leak
+# Test: TC-CR-047-B
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: monitoring-config
+data:
+  management.endpoints.web.exposure.include: "*"
+  management.endpoint.env.show-values: "always"
+  management.endpoint.configprops.show-values: "always"

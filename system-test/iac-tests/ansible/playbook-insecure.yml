@@ -1,0 +1,17 @@
+# IAC-12: Ansible Security — plaintext credentials, cert validation disabled
+# Test: TC-IAC-015
+- hosts: all
+  become: yes
+  vars:
+    ansible_become_password: "Passw0rd!"
+    ansible_ssh_pass: "SshPass123"
+    db_password: "super_secret"
+  tasks:
+    - name: Install package
+      apt:
+        name: nginx
+        validate_certs: no
+    - name: Create user
+      user:
+        name: "{{ username }}"
+        password: "{{ ansible_become_password }}"

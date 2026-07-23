@@ -1,0 +1,14 @@
+<!-- SEC-15: Cross-Site Scripting (XSS) -->
+<!-- Test: TC-CR-022 -->
+<!DOCTYPE html>
+<html>
+<head><title>Comment</title></head>
+<body>
+  <div id="comments"></div>
+  <script>
+    // XSS via innerHTML with unsanitized URL parameter
+    const comment = new URLSearchParams(location.search).get('text');
+    document.getElementById('comments').innerHTML = comment;
+  </script>
+</body>
+</html>

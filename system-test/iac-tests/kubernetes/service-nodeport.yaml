@@ -1,0 +1,26 @@
+# IAC-05: K8s Network & Storage — NodePort + hostPath
+# Test: TC-IAC-007
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+spec:
+  containers:
+  - name: web
+    image: nginx
+    volumeMounts:
+    - mountPath: /host
+      name: host-volume
+  volumes:
+  - name: host-volume
+    hostPath:
+      path: /var/lib/data

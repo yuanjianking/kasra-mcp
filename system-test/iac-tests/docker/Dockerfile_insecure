@@ -1,0 +1,11 @@
+# IAC-01: Dockerfile Security — latest tag, root user, ADD URL
+# Test: TC-IAC-001
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y python3
+USER root
+ADD https://example.com/install.sh /tmp/install.sh
+RUN /tmp/install.sh
+
+EXPOSE 80
+CMD ["python3", "app.py"]

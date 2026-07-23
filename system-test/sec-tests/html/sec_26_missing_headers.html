@@ -1,0 +1,15 @@
+<!-- SEC-26: Missing Security Headers (no CSP/HSTS in meta or headers) -->
+<!-- Test: TC-CR-032 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insecure App</title>
+  <!-- No Content-Security-Policy meta tag -->
+  <!-- No X-Frame-Options -->
+  <!-- No X-Content-Type-Options -->
+  <script src="https://cdn.example.com/analytics.js"></script>
+</head>
+<body>
+  <h1>Welcome</h1>
+</body>
+</html>

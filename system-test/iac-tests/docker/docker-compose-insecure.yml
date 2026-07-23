@@ -1,0 +1,12 @@
+# IAC-02: Docker Compose Security — 0.0.0.0 binding, host network, plaintext env
+# Test: TC-IAC-002
+version: '3'
+services:
+  web:
+    image: myapp:latest
+    ports:
+      - "0.0.0.0:8080:80"
+    environment:
+      - DB_PASSWORD=mysecretpassword
+      - API_KEY=sk-test123456
+    network_mode: host

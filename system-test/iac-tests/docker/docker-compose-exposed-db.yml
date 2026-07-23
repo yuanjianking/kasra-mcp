@@ -1,0 +1,10 @@
+# IAC-02: Docker Compose — exposed database with weak password
+# Test: TC-IAC-005
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "0.0.0.0:5432:5432"
+    environment:
+      POSTGRES_PASSWORD: changeme

@@ -1,0 +1,7 @@
+# SEC-40: Known CVE Dependencies
+# Test: TC-CR-045
+flask==0.12.0
+lodash==4.17.20
+axios==0.21.1
+log4j==2.14.0
+django==1.11.0

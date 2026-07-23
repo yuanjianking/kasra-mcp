@@ -1,0 +1,12 @@
+# SEC-16: CORS Misconfiguration in API Gateway
+# Test: TC-CR-023
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  cors.yaml: |
+    cors:
+      allowed_origins: "*"
+      supports_credentials: true
+      allowed_methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]

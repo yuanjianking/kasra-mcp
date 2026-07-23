@@ -1,0 +1,29 @@
+# IAC-19: CloudFormation Lambda Outside VPC
+# Additional test: Lambda function not attached to VPC (structural analysis)
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  DatabaseSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: prod-db-password
+      SecretString: '{"username":"admin","password":"supersecret"}'
+  ApiFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: api-handler
+      Runtime: python3.11
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              import os
+              db_password = os.environ.get('DB_PASSWORD')
+              return {"statusCode": 200}
+      Environment:
+        Variables:
+          DB_PASSWORD: !Ref DatabaseSecret
+          DB_HOST: internal-db.example.com
+      Tracing: Active
+      # Missing: VpcConfig — Lambda runs outside VPC
+      # Sensitive data accessible from internet-routed function

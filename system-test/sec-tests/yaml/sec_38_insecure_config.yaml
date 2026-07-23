@@ -1,0 +1,12 @@
+# SEC-38: Insecure Configuration Defaults
+# Test: TC-CR-043
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-settings
+data:
+  SECRET_KEY: "changeme"
+  SESSION_COOKIE_SECURE: "false"
+  SESSION_COOKIE_HTTPONLY: "false"
+  ALLOWED_HOSTS: "*"
+  CORS_ALLOW_ALL_ORIGINS: "true"

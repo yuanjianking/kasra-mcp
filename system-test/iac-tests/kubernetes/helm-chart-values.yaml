@@ -1,0 +1,3 @@
+# IAC-13: Helm Chart — default values without securityContext
+image:
+  tag: latest

@@ -1,0 +1,16 @@
+<!-- SEC-41: Subresource Integrity (SRI) Missing -->
+<!-- Test: TC-CR-046 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <!-- No integrity attribute on any of the above -->
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>

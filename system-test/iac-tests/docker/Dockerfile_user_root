@@ -1,0 +1,9 @@
+# IAC-01: Dockerfile Security — running as root
+# Test: TC-IAC-004
+FROM node:16-slim
+
+COPY package*.json ./
+RUN npm install
+USER root
+COPY . .
+CMD ["node", "app.js"]

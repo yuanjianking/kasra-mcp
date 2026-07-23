@@ -1,0 +1,15 @@
+<!-- SEC-26: Clickjacking — Missing X-Frame-Options / CSP frame-ancestors -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bank Transfer</title>
+  <!-- No frame-ancestors CSP directive -->
+  <!-- No X-Frame-Options header -->
+</head>
+<body>
+  <form action="/transfer" method="POST">
+    <input name="amount" value="10000">
+    <input type="submit" value="Confirm">
+  </form>
+</body>
+</html>

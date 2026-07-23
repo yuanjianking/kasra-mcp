@@ -1,0 +1,30 @@
+# IAC-04: K8s Workload Security — Helm template with privileged securityContext
+# Additional test: IAC-20: missing NetworkPolicy in K8s template
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name | default "myapp" }}
+  labels:
+    app: {{ .Values.name | default "myapp" }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: {{ .Values.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name | default "myapp" }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name | default "myapp" }}
+    spec:
+      {{- if .Values.securityContext }}
+      securityContext: {{- toYaml .Values.securityContext | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          privileged: true
+          runAsNonRoot: false
+          readOnlyRootFilesystem: false

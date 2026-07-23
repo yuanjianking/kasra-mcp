@@ -1,0 +1,11 @@
+# SEC-37: Debug Mode / Information Leak in config
+# Test: TC-CR-042
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DEBUG: "True"
+  FLASK_DEBUG: "1"
+  NODE_ENV: "development"
+  STACK_TRACE: "full"

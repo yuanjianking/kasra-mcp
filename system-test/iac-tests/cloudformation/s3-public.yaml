@@ -1,0 +1,21 @@
+# IAC-14: CloudFormation Security — public S3, open security group
+# Test: TC-IAC-017
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  PublicBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+  OpenSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Open security group
+      SecurityGroupIngress:
+      - CidrIp: 0.0.0.0/0
+        FromPort: 22
+        ToPort: 22
+        IpProtocol: tcp
+      - CidrIp: 0.0.0.0/0
+        FromPort: 3306
+        ToPort: 3306
+        IpProtocol: tcp

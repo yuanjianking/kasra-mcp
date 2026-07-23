@@ -1,0 +1,14 @@
+# IAC-01: Dockerfile Security — no USER directive (defaults to root)
+# Additional test: No explicit USER means root
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+
+USER root
+
+# No USER directive — runs as root by default
+EXPOSE 8000
+CMD ["python", "app.py"]

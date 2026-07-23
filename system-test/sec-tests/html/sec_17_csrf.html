@@ -1,0 +1,14 @@
+<!-- SEC-17: CSRF — No token in forms -->
+<!-- Test: TC-CR-024 -->
+<!DOCTYPE html>
+<html>
+<head><title>Transfer</title></head>
+<body>
+  <form action="/transfer" method="POST">
+    <input type="hidden" name="amount" value="1000">
+    <input type="hidden" name="to" value="attacker">
+    <!-- No CSRF token hidden field -->
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

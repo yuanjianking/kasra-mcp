@@ -1,0 +1,6 @@
+# IAC-16: Pulumi Security — missing state encryption
+# Test: TC-IAC-020
+name: my-infra
+runtime: python
+description: Production infrastructure
+# No encryptionSettings configured → state not encrypted

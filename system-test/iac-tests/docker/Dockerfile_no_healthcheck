@@ -1,0 +1,15 @@
+# IAC-01: Dockerfile Security — missing HEALTHCHECK
+FROM ubuntu:latest
+# Additional test: Production Dockerfile without health check
+# Note: Using latest tag so IAC-01 fires; missing HEALTHCHECK
+#       can't be detected by current rule patterns (absence detection).
+FROM ubuntu:latest
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY . .
+
+EXPOSE 3000
+# Missing: HEALTHCHECK instruction
+CMD ["node", "server.js"]

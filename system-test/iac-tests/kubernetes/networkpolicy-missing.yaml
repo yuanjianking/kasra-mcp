@@ -1,0 +1,50 @@
+# IAC-20: K8s Missing NetworkPolicy
+# Additional test: Namespace with pods but no NetworkPolicy isolation
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: production
+  name: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: api
+        image: backend:latest
+        ports:
+        - containerPort: 8080
+# No NetworkPolicy defined — all pods can communicate freely
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: production
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: mongo
+        image: mongo:6
+        ports:
+        - containerPort: 27017
+# Database is accessible from any pod in the namespace
