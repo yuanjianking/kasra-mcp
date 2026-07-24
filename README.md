@@ -149,6 +149,12 @@ The MCP server never stores your code — it reads, sends, and discards.
 
 ---
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
 ## Development
 
 ```bash
